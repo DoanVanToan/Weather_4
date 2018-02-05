@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="title_o">o</string>
+    <string name="title_icon">Icon weather</string>
+    <string name="title_permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="title_today">TODAY</string>
+    <string name="title_senvenday">7 DAY</string>
+    <string name="title_location_unavailable">Location unavailable!</string>
+    <string name="title_visibality">Visibality</string>
+    <string name="title_humidity">Humidity</string>
+    <string name="title_windspeed">Windspeed</string>
+    <string name="title_pressure">Pressure</string>
+    <string name="title_current_detail">Current Detail</string>
 </resources>
