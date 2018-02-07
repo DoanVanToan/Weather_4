@@ -12,4 +12,5 @@
     <string name="title_windspeed">Windspeed</string>
     <string name="title_pressure">Pressure</string>
     <string name="title_current_detail">Current Detail</string>
+    <string name="title_load_failure">Load data failure</string>
 </resources>
