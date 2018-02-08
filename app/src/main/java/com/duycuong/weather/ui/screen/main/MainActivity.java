@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -31,10 +32,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     private MainViewModel mViewModel;
     private LocationManager mLocationManager;
+    private ActionBar mActionBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActionBar = getSupportActionBar();
         mViewModel = new MainViewModel(this);
         ActivityMainBinding binding =
                 DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public void onLocationChanged(Location location) {
         mLocationManager.removeUpdates(this);
         mViewModel.getLocation(location);
-
+        mViewModel.getAddress(location, mActionBar);
     }
 
     @Override
