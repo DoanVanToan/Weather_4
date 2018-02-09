@@ -5,8 +5,8 @@ package com.duycuong.weather.utils;
  */
 
 public class Constant {
-    public static final String DARK_SKY_API = "https://api.darksky.net/";
-    public static final String GEO_CODE_API = "http://maps.googleapis.com/maps/api/geocode/json";
+    public static final String DARK_SKY_API = "https://api.darksky.net";
+    public static final String GEO_CODE_API = "https://maps.googleapis.com/maps/api/geocode/json";
     public static final String LATLNG_PART = "latlng";
     public static final String KEY_PART = "key";
     public static final String FORECAST_PART = "forecast";
@@ -20,4 +20,15 @@ public class Constant {
     public static final String GET_METHOD = "GET";
     public static final String HTTP_CODE = "HTTP Code";
     public static final String UTF_8 = "UTF-8";
+
+    public static final String CLEAR_DAY = "clear-day";
+    public static final String CLEAR_NIGHT = "clear-night";
+    public static final String RAIN = "rain";
+    public static final String SNOW = "snow";
+    public static final String SLEET = "sleet";
+    public static final String WIND = "wind";
+    public static final String FOG = "fog";
+    public static final String CLOUDY = "cloudy";
+    public static final String PARTLY_CLOUDY_DAY = "partly-cloudy-day";
+    public static final String PARTLY_CLOUDY_NIGHT = "partly-cloudy-night";
 }
