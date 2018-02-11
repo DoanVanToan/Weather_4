@@ -9,8 +9,11 @@ import android.widget.Toast;
 
 import com.duycuong.weather.BR;
 import com.duycuong.weather.data.model.AddressResponse;
+import com.duycuong.weather.data.model.WeatherLocation;
+import com.duycuong.weather.data.source.LocationRepository;
 import com.duycuong.weather.data.source.WeatherDataSource;
 import com.duycuong.weather.data.source.WeatherRepository;
+import com.duycuong.weather.data.source.local.sqlite.LocationLocalDataSource;
 import com.duycuong.weather.data.source.remote.WeatherRemoteDataSource;
 
 
@@ -22,12 +25,14 @@ public class MainViewModel extends BaseObservable {
     private MainActivity mActivity;
     private MainViewPagerAdapter mPagerAdapter;
     private WeatherRepository mWeatherRepository;
+    private LocationRepository mLocationRepository;
 
     public MainViewModel(Context context) {
         mActivity = (MainActivity) context;
         mPagerAdapter = new MainViewPagerAdapter(context,
                 mActivity.getSupportFragmentManager());
         mWeatherRepository = new WeatherRepository(new WeatherRemoteDataSource());
+        mLocationRepository = new LocationRepository(new LocationLocalDataSource(context));
     }
 
     @Bindable
@@ -68,5 +73,9 @@ public class MainViewModel extends BaseObservable {
                 //no-ops
             }
         });
+    }
+
+    public void saveLocation(WeatherLocation location) {
+        mLocationRepository.addLocation(location);
     }
 }

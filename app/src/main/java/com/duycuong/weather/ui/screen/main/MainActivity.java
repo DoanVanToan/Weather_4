@@ -2,6 +2,7 @@ package com.duycuong.weather.ui.screen.main;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.location.Location;
@@ -12,10 +13,22 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.duycuong.weather.R;
+import com.duycuong.weather.data.model.WeatherLocation;
 import com.duycuong.weather.databinding.ActivityMainBinding;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceDetectionClient;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 /**
  * Created by DuyCương on 04/02/2018.
@@ -24,6 +37,7 @@ import com.duycuong.weather.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
     private static final int PERMISSIONS_REQUEST_CODE = 1;
+    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 2;
     private static final String[] PERMISSIONS = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION
     };
@@ -34,9 +48,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private LocationManager mLocationManager;
     private ActionBar mActionBar;
 
+    protected GeoDataClient mGeoDataClient;
+    protected PlaceDetectionClient mPlaceDetectionClient;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mGeoDataClient = Places.getGeoDataClient(this, null);
+        mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
         mActionBar = getSupportActionBar();
         mViewModel = new MainViewModel(this);
         ActivityMainBinding binding =
@@ -122,6 +141,74 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 MIN_TIME,
                 MIN_DISTANCE,
                 this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_search) {
+            findPlace();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void findPlace() {
+        try {
+
+            AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                    .setTypeFilter(AutocompleteFilter.TYPE_FILTER_REGIONS)
+                    .build();
+
+            Intent intent =
+                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .setFilter(typeFilter)
+                            .build(this);
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+        } catch (GooglePlayServicesRepairableException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // A place has been received; use requestCode to track the request.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            switch (resultCode) {
+                case RESULT_OK:
+                    Place place = PlaceAutocomplete.getPlace(this, data);
+                    mActionBar.setTitle(place.getName());
+
+                    Location location = new Location(LocationManager.NETWORK_PROVIDER);
+                    location.setLatitude(place.getLatLng().latitude);
+                    location.setLongitude(place.getLatLng().longitude);
+
+                    mViewModel.saveLocation(new WeatherLocation(String.valueOf(place.getName()),
+                            place.getLatLng().latitude, place.getLatLng().longitude));
+
+                    mViewModel.getLocation(location);
+                    break;
+
+                case PlaceAutocomplete.RESULT_ERROR:
+                    Status status = PlaceAutocomplete.getStatus(this, data);
+                    Toast.makeText(this, status.getStatusMessage(), Toast.LENGTH_SHORT).show();
+                    break;
+                case RESULT_CANCELED:
+                    //no-ops
+                    break;
+            }
+        }
     }
 
     private void showToast(int msg) {
