@@ -14,6 +14,7 @@ import com.duycuong.weather.data.source.WeatherDataSource;
 import com.duycuong.weather.data.source.WeatherRepository;
 import com.duycuong.weather.data.source.remote.WeatherRemoteDataSource;
 import com.duycuong.weather.utils.Constant;
+import com.duycuong.weather.utils.IconWeather;
 import com.duycuong.weather.utils.TimeUtils;
 
 /**
@@ -85,8 +86,10 @@ public class CurrentWeatherViewModel extends BaseObservable {
                     @Override
                     public void onGetSuccess(CurrentlyResponse currentlyResponse) {
                         if (currentlyResponse.getCurrently() != null) {
-                            setCurrentTime(TimeUtils.getCurrentTime());
-                            setIcon(getStringIcon(currentlyResponse.getCurrently().getIcon()));
+                            setCurrentTime(TimeUtils.covertTime(Constant.HH_MM_DD_MM_YYYY,
+                                    currentlyResponse.getCurrently().getTime()));
+                            setIcon(IconWeather.getStringIcon(currentlyResponse
+                                    .getCurrently().getIcon()));
                             setCurrentWeather(currentlyResponse.getCurrently());
                         } else {
                             Toast.makeText(mContext, mContext.getString(R.string.title_no_data),
@@ -104,32 +107,5 @@ public class CurrentWeatherViewModel extends BaseObservable {
                         setShowProgressBar(false);
                     }
                 });
-    }
-
-    private int getStringIcon(String strIcon) {
-        switch (strIcon) {
-            case Constant.CLEAR_DAY:
-                return R.drawable.sunny_day;
-            case Constant.CLEAR_NIGHT:
-                return R.drawable.clear_night;
-            case Constant.RAIN:
-                return R.drawable.rain;
-            case Constant.SNOW:
-                return R.drawable.snow;
-            case Constant.SLEET:
-                return R.drawable.snow;
-            case Constant.WIND:
-                return R.drawable.wind;
-            case Constant.FOG:
-                return R.drawable.fog;
-            case Constant.CLOUDY:
-                return R.drawable.cloudly;
-            case Constant.PARTLY_CLOUDY_DAY:
-                return R.drawable.partly_cloudy_day;
-            case Constant.PARTLY_CLOUDY_NIGHT:
-                return R.drawable.partly_cloudy_day;
-            default:
-                return R.drawable.defaut;
-        }
     }
 }

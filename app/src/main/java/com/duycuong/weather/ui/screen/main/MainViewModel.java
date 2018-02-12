@@ -44,6 +44,7 @@ public class MainViewModel extends BaseObservable {
         mPagerAdapter.getLocation(location);
     }
 
+
     public void getAddress(Location location, final ActionBar actionBar) {
         mWeatherRepository.getAddress(location, new WeatherDataSource.Callback<AddressResponse>() {
             @Override
@@ -68,9 +69,5 @@ public class MainViewModel extends BaseObservable {
                 //no-ops
             }
         });
-    }
-
-    public void setTitleActionBar(ActionBar actionBar, String address) {
-        actionBar.setTitle(address);
     }
 }
