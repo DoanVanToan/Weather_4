@@ -34,6 +34,10 @@ public class AddressResponse {
         mStatus = status;
     }
 
+    /**
+     * Created by DuyCương on 06/02/2018.
+     */
+
     public class AddressComponent {
 
         @SerializedName("long_name")
@@ -48,6 +52,10 @@ public class AddressResponse {
             mLongName = longName;
         }
     }
+
+    /**
+     * Created by DuyCương on 06/02/2018.
+     */
 
     public class Result {
 
