@@ -26,10 +26,10 @@ public class CurrentWeather {
     private int mNearestStormBearing;
     @SerializedName("precipIntensity")
     @Expose
-    private int mPrecipIntensity;
+    private double mPrecipIntensity;
     @SerializedName("precipProbability")
     @Expose
-    private int mPrecipProbability;
+    private double mPrecipProbability;
     @SerializedName("temperature")
     @Expose
     private double mTemperature;
@@ -62,7 +62,7 @@ public class CurrentWeather {
     private int mUvIndex;
     @SerializedName("visibility")
     @Expose
-    private int mVisibility;
+    private double mVisibility;
     @SerializedName("ozone")
     @Expose
     private double mOzone;
@@ -107,19 +107,19 @@ public class CurrentWeather {
         mNearestStormBearing = nearestStormBearing;
     }
 
-    public int getPrecipIntensity() {
+    public double getPrecipIntensity() {
         return mPrecipIntensity;
     }
 
-    public void setPrecipIntensity(int precipIntensity) {
+    public void setPrecipIntensity(double precipIntensity) {
         mPrecipIntensity = precipIntensity;
     }
 
-    public int getPrecipProbability() {
+    public double getPrecipProbability() {
         return mPrecipProbability;
     }
 
-    public void setPrecipProbability(int precipProbability) {
+    public void setPrecipProbability(double precipProbability) {
         mPrecipProbability = precipProbability;
     }
 
@@ -203,7 +203,7 @@ public class CurrentWeather {
         mUvIndex = uvIndex;
     }
 
-    public int getVisibility() {
+    public double getVisibility() {
         return mVisibility;
     }
 

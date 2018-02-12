@@ -17,6 +17,18 @@ public class Datum {
     @Expose
     private String mIcon;
 
+    @SerializedName("summary")
+    @Expose
+    private String mSummary;
+
+    public String getSummary() {
+        return mSummary;
+    }
+
+    public void setSummary(String summary) {
+        mSummary = summary;
+    }
+
     @SerializedName("temperatureHigh")
     @Expose
     private double mTemperatureHigh;
