@@ -44,7 +44,6 @@ public class MainViewModel extends BaseObservable {
         mPagerAdapter.getLocation(location);
     }
 
-
     public void getAddress(Location location, final ActionBar actionBar) {
         mWeatherRepository.getAddress(location, new WeatherDataSource.Callback<AddressResponse>() {
             @Override

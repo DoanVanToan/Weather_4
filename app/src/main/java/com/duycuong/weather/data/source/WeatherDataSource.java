@@ -4,6 +4,7 @@ import android.location.Location;
 
 import com.duycuong.weather.data.model.AddressResponse;
 import com.duycuong.weather.data.model.CurrentlyResponse;
+import com.duycuong.weather.data.model.WeatherDailyResponse;
 
 /**
  * Created by DuyCương on 05/02/2018.
@@ -23,4 +24,6 @@ public interface WeatherDataSource {
     void getWeatherCurrent(Location location, Callback<CurrentlyResponse> callback);
 
     void getAddress(Location location, Callback<AddressResponse> callback);
+
+    void getNextDaysWeather(Location location, Callback<WeatherDailyResponse> callback);
 }
