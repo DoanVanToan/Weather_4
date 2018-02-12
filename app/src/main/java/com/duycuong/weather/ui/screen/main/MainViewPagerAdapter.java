@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.duycuong.weather.R;
 import com.duycuong.weather.ui.screen.main.current_weather.CurrentWeatherFragment;
+import com.duycuong.weather.ui.screen.main.nextdays_weather.NextDaysWeatherFragment;
 
 /**
  * Created by DuyCương on 01/02/2018.
@@ -19,13 +20,13 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter
     private String[] mFragmentNames;
     private CurrentWeatherFragment mCurrentWeatherFragment
             = CurrentWeatherFragment.newInstance();
-//    private NextDaysWeatherFragment mNextsDayWeatherFragment
-//            = NextDaysWeatherFragment.newInstance();
+    private NextDaysWeatherFragment mNextsDayWeatherFragment
+            = NextDaysWeatherFragment.newInstance();
 
     public MainViewPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mFragments = new Fragment[]{
-                mCurrentWeatherFragment//, mNextsDayWeatherFragment
+                mCurrentWeatherFragment, mNextsDayWeatherFragment
         };
         mFragmentNames = new String[]{
                 context.getString(R.string.title_today), context.getString(R.string.title_senvenday)
@@ -50,5 +51,6 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter
     @Override
     public void getLocation(Location location) {
         mCurrentWeatherFragment.getLocation(location);
+        mNextsDayWeatherFragment.getLocation(location);
     }
 }

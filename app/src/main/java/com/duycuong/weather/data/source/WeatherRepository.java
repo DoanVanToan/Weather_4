@@ -4,6 +4,7 @@ import android.location.Location;
 
 import com.duycuong.weather.data.model.AddressResponse;
 import com.duycuong.weather.data.model.CurrentlyResponse;
+import com.duycuong.weather.data.model.WeatherDailyResponse;
 
 /**
  * Created by DuyCương on 06/02/2018.
@@ -25,5 +26,10 @@ public class WeatherRepository implements WeatherDataSource {
     @Override
     public void getAddress(Location location, Callback<AddressResponse> callback) {
         mWeatherDataSource.getAddress(location, callback);
+    }
+
+    @Override
+    public void getNextDaysWeather(Location location, Callback<WeatherDailyResponse> callback) {
+        mWeatherDataSource.getNextDaysWeather(location, callback);
     }
 }

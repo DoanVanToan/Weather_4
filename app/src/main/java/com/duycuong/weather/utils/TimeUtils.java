@@ -8,7 +8,7 @@ import java.util.Locale;
  */
 
 public class TimeUtils {
-    public static String covertTime(String format, int time) {
+    public static String covertTime(String format, long time) {
         SimpleDateFormat simpleDateFormat =
                 new SimpleDateFormat(format, Locale.getDefault());
         return simpleDateFormat.format(time * 1000);
