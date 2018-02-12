@@ -109,20 +109,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageWeather" />
 
                 <TextView
-                    android:id="@+id/textViewDegree"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dp_8"
-                    android:layout_marginTop="@dimen/dp_8"
-                    android:text="@string/title_o"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/sp_50"
-                    app:layout_constraintBottom_toBottomOf="@+id/textViewTemperature"
-                    app:layout_constraintStart_toEndOf="@+id/textViewTemperature"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.428" />
-
-                <TextView
                     android:id="@+id/textViewCurrentDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

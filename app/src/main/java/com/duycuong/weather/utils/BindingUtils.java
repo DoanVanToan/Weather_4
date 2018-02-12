@@ -6,7 +6,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 

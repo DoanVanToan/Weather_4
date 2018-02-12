@@ -21,6 +21,9 @@ public class Constant {
     public static final String HTTP_CODE = "HTTP Code";
     public static final String UTF_8 = "UTF-8";
 
+    public static final String DAY_MONTH = "dd/MM";
+    public static final String HH_MM_DD_MM_YYYY = "HH:mm dd/MM/yyyy";
+
     public static final String CLEAR_DAY = "clear-day";
     public static final String CLEAR_NIGHT = "clear-night";
     public static final String RAIN = "rain";

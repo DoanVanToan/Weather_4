@@ -15,8 +15,8 @@ import com.duycuong.weather.ui.screen.main.ListenerLocationChange;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CurrentWeatherFragment extends Fragment implements ListenerLocationChange {
 
+public class CurrentWeatherFragment extends Fragment implements ListenerLocationChange {
     private CurrentWeatherViewModel mViewModel;
 
     public static CurrentWeatherFragment newInstance() {

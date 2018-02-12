@@ -1,7 +1,6 @@
 package com.duycuong.weather.utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -9,10 +8,9 @@ import java.util.Locale;
  */
 
 public class TimeUtils {
-    public static String getCurrentTime() {
-        Date date = new Date();
+    public static String covertTime(String format, int time) {
         SimpleDateFormat simpleDateFormat =
-                new SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
-        return simpleDateFormat.format(date.getTime());
+                new SimpleDateFormat(format, Locale.getDefault());
+        return simpleDateFormat.format(time * 1000);
     }
 }

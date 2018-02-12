@@ -8,24 +8,24 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.duycuong.weather.R;
 import com.duycuong.weather.ui.screen.main.current_weather.CurrentWeatherFragment;
-import com.duycuong.weather.ui.screen.main.nextsday_weather.NextsDayWeatherFragment;
 
 /**
  * Created by DuyCương on 01/02/2018.
  */
 
-public class MainViewPagerAdapter extends FragmentPagerAdapter implements ListenerLocationChange {
+public class MainViewPagerAdapter extends FragmentPagerAdapter
+        implements ListenerLocationChange {
     private Fragment[] mFragments;
     private String[] mFragmentNames;
     private CurrentWeatherFragment mCurrentWeatherFragment
             = CurrentWeatherFragment.newInstance();
-    private NextsDayWeatherFragment mNextsDayWeatherFragment
-            = NextsDayWeatherFragment.newInstance();
+//    private NextDaysWeatherFragment mNextsDayWeatherFragment
+//            = NextDaysWeatherFragment.newInstance();
 
     public MainViewPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mFragments = new Fragment[]{
-                mCurrentWeatherFragment, mNextsDayWeatherFragment
+                mCurrentWeatherFragment//, mNextsDayWeatherFragment
         };
         mFragmentNames = new String[]{
                 context.getString(R.string.title_today), context.getString(R.string.title_senvenday)
