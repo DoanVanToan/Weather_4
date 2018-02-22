@@ -34,4 +34,12 @@ public class Constant {
     public static final String CLOUDY = "cloudy";
     public static final String PARTLY_CLOUDY_DAY = "partly-cloudy-day";
     public static final String PARTLY_CLOUDY_NIGHT = "partly-cloudy-night";
+
+    public static final int VERSION = 1;
+    public static final String DATABASE_NAME = "LOCATION_DATABASE";
+    public static final String TABLE_LOACTION = "location";
+    public static final String NAME_LOCATION = "name";
+    public static final String COORDINATE = "coordinates";
+    public static final String LATITUDE = "latitude";
+    public static final String LONGITUDE = "longitude";
 }
