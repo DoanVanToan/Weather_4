@@ -53,4 +53,5 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter
         mCurrentWeatherFragment.getLocation(location);
         mNextsDayWeatherFragment.getLocation(location);
     }
+
 }

@@ -28,7 +28,7 @@ public class WeatherRemoteDataSource implements WeatherDataSource {
                         .append("/")
                         .append(BuildConfig.DASK_SKY_API_KEY)
                         .append("/")
-                        .append(location.getLatitude() + "")
+                        .append(location.getLatitude())
                         .append(",")
                         .append(location.getLongitude())
                         .append("?")
@@ -184,4 +184,6 @@ public class WeatherRemoteDataSource implements WeatherDataSource {
             }
         }).execute(url.toString());
     }
+
+
 }

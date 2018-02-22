@@ -1,6 +1,7 @@
 package com.duycuong.weather.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -14,3 +15,4 @@ public class TimeUtils {
         return simpleDateFormat.format(time * 1000);
     }
 }
+
