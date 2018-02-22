@@ -38,4 +38,10 @@ public class CurrentWeatherFragment extends Fragment implements ListenerLocation
     public void getLocation(Location location) {
         mViewModel.getTheCurrentWeather(location);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.updateUnit();
+    }
 }

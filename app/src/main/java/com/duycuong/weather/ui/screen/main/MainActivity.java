@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.duycuong.weather.R;
 import com.duycuong.weather.data.model.WeatherLocation;
 import com.duycuong.weather.databinding.ActivityMainBinding;
+import com.duycuong.weather.ui.screen.setting.SettingActivity;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -51,12 +52,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected GeoDataClient mGeoDataClient;
     protected PlaceDetectionClient mPlaceDetectionClient;
 
+    private Location mLocation;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mActionBar = getSupportActionBar();
+
         mGeoDataClient = Places.getGeoDataClient(this, null);
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
-        mActionBar = getSupportActionBar();
+
+
         mViewModel = new MainViewModel(this);
         ActivityMainBinding binding =
                 DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -157,6 +164,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         if (id == R.id.action_search) {
             findPlace();
             return true;
+        }
+
+        if (id == R.id.location) {
+            // Todo location history
+        }
+
+        if (id == R.id.select_date) {
+            //Todo select date
+        }
+
+        if (id == R.id.setting) {
+            startActivity(new Intent(MainActivity.this, SettingActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

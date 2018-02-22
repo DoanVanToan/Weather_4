@@ -20,6 +20,8 @@ public class Constant {
     public static final String GET_METHOD = "GET";
     public static final String HTTP_CODE = "HTTP Code";
     public static final String UTF_8 = "UTF-8";
+    public static final String UNITS = "units";
+    public static final String SI = "si";
 
     public static final String DAY_MONTH = "dd/MM";
     public static final String HH_MM_DD_MM_YYYY = "HH:mm dd/MM/yyyy";
@@ -42,4 +44,7 @@ public class Constant {
     public static final String COORDINATE = "coordinates";
     public static final String LATITUDE = "latitude";
     public static final String LONGITUDE = "longitude";
+    public static final String TEMPERATURE = "temperature";
+    public static final String SPEED = "speed";
+    public static final String UNIT = "unit";
 }

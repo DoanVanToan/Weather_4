@@ -4,8 +4,11 @@ import android.databinding.BindingAdapter;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -36,4 +39,16 @@ public class BindingUtils {
         df.setRoundingMode(RoundingMode.CEILING);
         textview.setText(df.format(temparature));
     }
+
+    @BindingAdapter({"bind:onRefresh"})
+    public static void setOnRefreshing(SwipeRefreshLayout layout,
+                                       SwipeRefreshLayout.OnRefreshListener listener) {
+        layout.setOnRefreshListener(listener);
+    }
+
+    @BindingAdapter({"bind:recyclerAdapter"})
+    public static void setAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
+        recyclerView.setAdapter(adapter);
+    }
+
 }

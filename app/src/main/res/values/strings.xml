@@ -15,4 +15,18 @@
     <string name="title_load_failure">Load data failure</string>
     <string name="title_no_data">No data!</string>
     <string name="title_find_place">Find place</string>
+    <string name="title_dew_point">Dew point</string>
+    <string name="title_uv_index">UV Index</string>
+    <string name="title_location">Location</string>
+    <string name="title__select_date">Select Date</string>
+
+    <string name="title_percent">%</string>
+    <string name="title_km">km</string>
+    <string name="title_setting">Setting</string>
+    <string name="title_H">H</string>
+    <string name="title_ozone">Ozone</string>
+    <string name="title_temperature">Temperature</string>
+    <string name="title_speed">Speed</string>
+
+
 </resources>
